@@ -11,15 +11,16 @@ const watchVideosInSequence = async (page, ipAddr, targetUrlsList, durationInSec
       await page.waitFor(30 * 1000);
       await page.waitForSelector('.ytp-time-duration', { timeout: 30000 });
       await page.mouse.click(100, 100);
-      const totalTime = await page.evaluate(() => {
-        return Array.from(document.getElementsByClassName("ytp-time-duration")).map(d => {
-          const min = parseInt(d.innerText.split(":")[0]) * 60
-          return parseInt(d.innerText.split(":")[1]) + min 
-        });
-      });
-      const percentageToWatch = 30 + Math.ceil(Math.random()*100) % 70;
-      const duration = Math.ceil((totalTime/100) * percentageToWatch);
+      // const totalTime = await page.evaluate(() => {
+      //   return Array.from(document.getElementsByClassName("ytp-time-duration")).map(d => {
+      //     const min = parseInt(d.innerText.split(":")[0]) * 60
+      //     return parseInt(d.innerText.split(":")[1]) + min 
+      //   });
+      // });
+      // const percentageToWatch = 10 + Math.ceil(Math.random()*100) % 50;
+      // const duration = Math.ceil((totalTime/100) * percentageToWatch);
       // console.log(totalTime,percentageToWatch,duration)
+      const duration = (durationInSeconds + _random(-(durationInSeconds / 6), (durationInSeconds / 6), true));
       await page.waitFor(duration * 1000);
       await page.mouse.click(100, 100);
       await logger.logCount(page, url, ipAddr, duration);
