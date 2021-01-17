@@ -13,12 +13,12 @@ const URL_CONTAINER_FILE_NAME = 'urls.txt';
  */
 
 
-let START_PORT = 9052;
-let BATCH_COUNT = IS_PROD ? 1 : 1;
-let TOTAL_COUNT = 123;
-let VIEW_ACTION_COUNT = 10;
-let VIEW_DURATION = 50;
-let PAGE_DEFAULT_TIMEOUT = 600;
+const START_PORT = 9052;
+const BATCH_COUNT = IS_PROD ? 1 : 1;
+const TOTAL_COUNT = 123;
+const VIEW_ACTION_COUNT = 10;
+const VIEW_DURATION = 50;
+const PAGE_DEFAULT_TIMEOUT = 600;
 
 module.exports = {
   IS_PROD,

@@ -8,9 +8,9 @@ const watchVideosInSequence = async (page, ipAddr, targetUrlsList, durationInSec
     await page.goto(url, { waitUntil: 'load' });
     try {
       // One of these SELECTORs should appear, we don't know which
-      await page.waitForFunction((values) => { 
-        return document.querySelectorAll(values).length;
-      }, {timeout:30000}, '.view-count' + ", " + '.animated-channel-viewers-count'); 
+      await page.waitForFunction(() => {
+        document.querySelectorAll('.view-count' + ", " + '.live-time').length;
+      }, {timeout:600000}); 
       // await page.waitForSelector('.view-count', { timeout: 30000 });
       await page.waitFor(30 * 1000);
       // await page.waitForSelector('.ytp-time-duration', { timeout: 30000 });
