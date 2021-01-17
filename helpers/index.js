@@ -7,9 +7,13 @@ const watchVideosInSequence = async (page, ipAddr, targetUrlsList, durationInSec
   for (const url of targetUrlsList) {
     await page.goto(url, { waitUntil: 'load' });
     try {
-      await page.waitForSelector('.view-count', { timeout: 30000 });
+      // One of these SELECTORs should appear, we don't know which
+      await page.waitForFunction((values) => { 
+        return document.querySelectorAll(values).length;
+      }, {timeout:30000}, '.view-count' + ", " + '.animated-channel-viewers-count'); 
+      // await page.waitForSelector('.view-count', { timeout: 30000 });
       await page.waitFor(30 * 1000);
-      await page.waitForSelector('.ytp-time-duration', { timeout: 30000 });
+      // await page.waitForSelector('.ytp-time-duration', { timeout: 30000 });
       await page.mouse.click(100, 100);
       // const totalTime = await page.evaluate(() => {
       //   return Array.from(document.getElementsByClassName("ytp-time-duration")).map(d => {
