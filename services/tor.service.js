@@ -31,7 +31,7 @@ const stopTor = async () => {
   try {
     await execWithPromise('pkill -9 -f "tor"');
   } catch (error) {
-    logger.warn('Failed to stop TOR. Usually this is a no op but ensure the subsequent attempts are using different IPs.');
+    // logger.warn('Failed to stop TOR. Usually this is a no op but ensure the subsequent attempts are using different IPs.');
     logger.debug(error);
   }
 };
