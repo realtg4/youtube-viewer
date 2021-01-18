@@ -7,7 +7,8 @@ const { logger } = require('../utils');
 const { VIEW_ACTION_COUNT, IP_GETTER_URL, PAGE_DEFAULT_TIMEOUT } = require('../utils/constants');
 
 const getCurrentIP = async (page) => {
-  await page.goto(IP_GETTER_URL, { waitUntil: 'load' });
+  await page.goto(IP_GETTER_URL, { waitUntil: 'networkidle0' });
+  await page.waitForSelector('body', { timeout: 30000 });
   return page.$eval('body', (body) => body.innerText);
 };
 

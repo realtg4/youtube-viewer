@@ -8,10 +8,18 @@ let {
 async function main() {
   try {
     const targetUrls = urlReader(URL_CONTAINER_FILE_NAME);
+    logger.info(`Urls:`+targetUrls[0].split("/").slice(-1)[0]);
     if(targetUrls.length < 2){
-      VIEW_DURATION = 120;
-      BATCH_COUNT = 8;
-      VIEW_ACTION_COUNT = 5;
+      if(targetUrls[0].split("/").slice(-1)[0] == "live"){
+        VIEW_DURATION = 50;
+        BATCH_COUNT = 10;
+        VIEW_ACTION_COUNT = 3;
+      }
+      else {
+        VIEW_DURATION = 120;
+        BATCH_COUNT = 6;
+        VIEW_ACTION_COUNT = 3;
+      }
     }else if(targetUrls.length < 10){
       VIEW_DURATION = 100;
       TOTAL_COUNT = 30;
