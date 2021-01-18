@@ -10,14 +10,19 @@ async function main() {
     const targetUrls = urlReader(URL_CONTAINER_FILE_NAME);
     if(targetUrls.length < 2){
       VIEW_DURATION = 120;
+      TOTAL_COUNT = 123;
     }else if(targetUrls.length < 10){
-      VIEW_DURATION = 80;
+      VIEW_DURATION = 100;
+      TOTAL_COUNT = 30;
     }else if (targetUrls.length < 50){
-      VIEW_DURATION = 60;
+      VIEW_DURATION = 80;
+      TOTAL_COUNT = 25;
     }else{
-      VIEW_DURATION = 50;
+      VIEW_DURATION = 60;
+      TOTAL_COUNT = 5;
     }
-    logger.info(`Preparing to generate ${TOTAL_COUNT} views. Target URL(s): ${targetUrls} Duration: ${VIEW_DURATION} seconds`);
+    logger.info(`Total Urls:`+targetUrls.length);
+    logger.info(`Preparing to generate ${TOTAL_COUNT} views. Duration: ${VIEW_DURATION} seconds`); //Target URL(s): ${targetUrls} 
     await TorService.writeTorConfig(START_PORT, BATCH_COUNT);
 
     for (let i = 0; i < Math.ceil(TOTAL_COUNT / BATCH_COUNT); i += 1) {
