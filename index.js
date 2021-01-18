@@ -10,7 +10,8 @@ async function main() {
     const targetUrls = urlReader(URL_CONTAINER_FILE_NAME);
     if(targetUrls.length < 2){
       VIEW_DURATION = 120;
-      TOTAL_COUNT = 123;
+      BATCH_COUNT = 8;
+      VIEW_ACTION_COUNT = 5;
     }else if(targetUrls.length < 10){
       VIEW_DURATION = 100;
       TOTAL_COUNT = 30;
